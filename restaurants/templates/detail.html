@@ -8,7 +8,7 @@
 <div class="card">
   <h5 class="card-header">Restaurant Info</h5>
   {% if restaurant.logo %}
-    <img class="card-img-top" src="{{restaurant.logo.url}}" alt="Hey Noob, look at me...">
+  <img class="card-img-top" src="{{restaurant.logo.url}}" alt="Hey Noob, look at me...">
   {% endif %}
   <div class="card-body">
     <h5 class="card-title">{{restaurant.name}}</h5>
@@ -16,13 +16,21 @@
     <p class="card-text">Opening Time: {{restaurant.opening_time}}</p>
     <p class="card-text">Closing Time: {{restaurant.closing_time}}</p>
     <div class="row text-center">
-        <div class="col-md-6">
-            <a href="{% url 'restaurant-update' restaurant.id %}" class="btn btn-outline-primary btn-block">Update</a>
-        </div>
-        <div class="col-md-6">
-            <a href="{% url 'restaurant-delete' restaurant.id %}" class="btn btn-outline-danger btn-block">Delete</a>
-        </div>
+      <div class="col-md-6">
+        <a href="{% url 'restaurant-update' restaurant.id %}" class="btn btn-outline-primary btn-block">Update</a>
+      </div>
+      <div class="col-md-6">
+        <a href="{% url 'restaurant-delete' restaurant.id %}" class="btn btn-outline-danger btn-block">Delete</a>
+      </div>
     </div>
+    <a href="{% url 'item-create' restaurant.id %}">
+      Add Item
+    </a>
+    {% for item in items %}
+    <p>{{item.name}}</p>
+    <p>{{item.description}}</p>
+    <p>{{item.price}}</p>
+    {% endfor %}
   </div>
 </div>
 {% endblock content %}
